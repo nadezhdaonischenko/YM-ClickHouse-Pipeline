@@ -73,14 +73,90 @@ yandex_metrika_clickhouse/
 
 ## ⚙️ Настройка
 
-Заполнить файлы:
+Перед запуском необходимо заполнить два файла конфигурации:
 
-```text
-.env
-.env.airflow
+- `.env` — для локального запуска;
+- `.env.airflow` — для запуска проекта в Docker / Airflow.
+
+### `.env`
+
+```env
+
+# Yandex Metrika
+YANDEX_METRIKA_TOKEN=your_yandex_metrika_token
+COUNTER_ID=your_counter_id
+
+# Период для ручного запуска через main.py
+START_DATE=YYYY-MM-DD
+END_DATE=YYYY-MM-DD
+SOURCE=visits
+
+# ClickHouse
+CLICKHOUSE_HOST=localhost
+CLICKHOUSE_PORT=8123
+CLICKHOUSE_DATABASE=database_name
+CLICKHOUSE_USER=user_name
+CLICKHOUSE_PASSWORD=your_clickhouse_password
+
+# HTTP
+HTTP_TIMEOUT=30 # Таймаут HTTP-запросов (сек.)
+API_MAX_RETRIES=3 # Количество повторных попыток
+API_RETRY_DELAY=5 # Задержка между повторными попытками (сек.)
+
+# ETL
+POLL_INTERVAL=5 # Интервал проверки статуса задачи Logs API (сек.)
+MAX_WAIT_TIME=1800 # Максимальное время ожидания обработки задачи (сек.)
+CHUNK_SIZE=10000 # Размер пакета при записи в ClickHouse
+
+# Logging
+LOG_LEVEL=INFO
 ```
 
-Шаблоны файлов находятся в проекте.
+### `.env.airflow`
+
+```env
+
+# Yandex Metrika
+
+YANDEX_METRIKA_TOKEN=your_yandex_metrika_token
+COUNTER_ID=your_counter_id
+
+# Эти даты используются только при ручном запуске main.py
+# Airflow определяет даты загрузки самостоятельно.
+
+START_DATE=YYYY-MM-DD
+END_DATE=YYYY-MM-DD
+SOURCE=visits
+
+# ClickHouse
+# При запуске из Docker используется host.docker.internal
+
+CLICKHOUSE_HOST=host.docker.internal
+CLICKHOUSE_PORT=8123
+CLICKHOUSE_DATABASE=metrika
+CLICKHOUSE_USER=default
+CLICKHOUSE_PASSWORD=your_clickhouse_password
+
+# HTTP
+HTTP_TIMEOUT=30 # Таймаут HTTP-запросов (сек.)
+API_MAX_RETRIES=3 # Количество повторных попыток
+API_RETRY_DELAY=5 # Задержка между повторными попытками (сек.)
+
+# ETL
+POLL_INTERVAL=5 # Интервал проверки статуса задачи Logs API (сек.)
+MAX_WAIT_TIME=1800 # Максимальное время ожидания обработки задачи (сек.)
+CHUNK_SIZE=10000 # Размер пакета при записи в ClickHouse
+
+# Logging
+LOG_LEVEL=INFO
+
+# Airflow
+AIRFLOW__API__AUTH__JWT_SECRET=your_random_secret
+AIRFLOW__WEBSERVER__SECRET_KEY=your_random_secret
+
+```
+
+После заполнения конфигурации можно запускать проект.
 
 ---
 
