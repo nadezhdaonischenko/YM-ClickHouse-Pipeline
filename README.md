@@ -151,8 +151,8 @@ CHUNK_SIZE=10000 # Размер пакета при записи в ClickHouse
 LOG_LEVEL=INFO
 
 # Airflow
-AIRFLOW__API__AUTH__JWT_SECRET=your_random_secret
-AIRFLOW__WEBSERVER__SECRET_KEY=your_random_secret
+AIRFLOW__API__AUTH__JWT_SECRET=your_random_secret_1
+AIRFLOW__WEBSERVER__SECRET_KEY=your_random_secret_2
 
 ```
 
