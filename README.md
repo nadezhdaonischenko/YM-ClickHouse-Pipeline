@@ -45,6 +45,7 @@ Yandex Metrika
 - 🐘 PostgreSQL 16
 - 🐳 Docker
 - 🔧 Alembic
+- 🔄 BPMN 2.0
 
 ---
 
@@ -308,3 +309,11 @@ docker exec airflow-scheduler airflow dags list-runs yandex_metrika_daily
 ```bash
 docker exec airflow-scheduler airflow dags trigger yandex_metrika_daily
 ```
+
+---
+
+## 🔄 BPMN
+
+BPMN 2.0 схема ETL-процесса загрузки данных из Яндекс Метрики в ClickHouse.
+
+![BPMN ETL Pipeline](docs/bpmn/etl_pipeline.bpmn.png)
