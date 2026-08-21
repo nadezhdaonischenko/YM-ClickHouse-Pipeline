@@ -318,6 +318,6 @@ BPMN 2.0 схема ETL-процесса загрузки данных из Ян
 
 ![BPMN ETL Pipeline](/bpmn/etl_pipeline.png)
 
-Обработка запроса Logs API
+Обработка запроса Logs API (подпроцесс)
 
 ![BPMN ETL Pipeline](/bpmn/etl_pipeline_sub.png)
