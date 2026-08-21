@@ -317,4 +317,7 @@ docker exec airflow-scheduler airflow dags trigger yandex_metrika_daily
 BPMN 2.0 схема ETL-процесса загрузки данных из Яндекс Метрики в ClickHouse.
 
 ![BPMN ETL Pipeline](/bpmn/etl_pipeline.png)
+
+Обработка запроса Logs API
+
 ![BPMN ETL Pipeline](/bpmn/etl_pipeline_sub.png)
